@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 #线性拉伸处理
 #去掉最大最小0.5%的像素值 线性拉伸至[0,1]
 def stretchImage(data, s=0.005, bins = 2000):   
-    ht = np.histogram(data, bins);
+    ht = np.histogram(data, bins)
     d = np.cumsum(ht[0])/float(data.size)
     lmin = 0; lmax=bins-1
     while lmin<bins:
