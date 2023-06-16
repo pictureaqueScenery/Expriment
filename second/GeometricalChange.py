@@ -1,5 +1,6 @@
 import cv2  
 import numpy as np  
+import matplotlib.pyplot as plt
 
 def move(img, width, height, x, y):
     #平移参数
@@ -34,11 +35,13 @@ y = 100
 change1 = move(img, width, height, x, y)
 change = move(img, width, height, x, y)
 # cv2.imshow("change1", change1)
+
 #旋转角度
 angle = 30
 change2 = rotation(img, width, height, angle)
 change = rotation(change, width, height, angle)
 # cv2.imshow("change2", change2)
+
 #水平镜像1，垂直镜像0，同时-1
 flipCode = -1
 change3 = mirror(img, flipCode)
@@ -46,6 +49,8 @@ change = mirror(change, flipCode)
 # cv2.imshow("change3", change3)
 
 #显示图像
-cv2.imshow("change", change)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+plt.subplot(221),plt.imshow(cv2.cvtColor(change1, cv2.COLOR_BGR2RGB)),plt.axis('off')
+plt.subplot(222),plt.imshow(cv2.cvtColor(change2, cv2.COLOR_BGR2RGB)),plt.axis('off')
+plt.subplot(223),plt.imshow(cv2.cvtColor(change3, cv2.COLOR_BGR2RGB)),plt.axis('off')
+plt.subplot(224),plt.imshow(cv2.cvtColor(change, cv2.COLOR_BGR2RGB)),plt.axis('off')
+plt.show()

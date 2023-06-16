@@ -7,11 +7,10 @@ img = cv2.imread("paimeng.jpg")
 
 def magnitude_phase_split(img):
     dft = np.fft.fft2(img)
-    dft_shift = np.fft.fftshift(dft)
     #幅度谱
-    magnitude = np.abs(dft_shift)
+    magnitude = np.abs(dft)
     #相位谱
-    phase = np.angle(dft_shift)
+    phase = np.angle(dft)
     return magnitude,phase
 
 def magnitude_phase_combine(img_m, img_p):
